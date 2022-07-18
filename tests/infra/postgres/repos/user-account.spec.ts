@@ -40,4 +40,32 @@ describe('PgUserAccountRepository', () => {
       expect(account).toBeUndefined()
     })
   })
+
+  describe('saveWithFacebook', () => {
+    beforeAll(async () => {
+      const db = await makeFakeDb([PgUser])
+      backup = db.backup()
+      pgUserRepo = getRepository(PgUser)
+    })
+
+    afterAll(async () => {
+      await getConnection().close()
+    })
+
+    beforeEach(() => {
+      backup.restore()
+      sut = new PgUserAccountRepository()
+    })
+
+    it('should create an accoun tif id is undefined', async () => {
+      await sut.saveWithFacebook({
+        email: 'any_email',
+        name: 'any_name',
+        facebookId: 'any_fb_id'
+      })
+      const pgUser = await pgUserRepo.findOne({ email: 'any_email' })
+
+      expect(pgUser?.id).toBe(1)
+    })
+  })
 })
