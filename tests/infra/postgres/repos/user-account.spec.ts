@@ -6,13 +6,13 @@ import { getConnection, getRepository, Repository } from 'typeorm'
 import { makeFakeDb } from '@/tests/infra/postgres/mocks'
 
 describe('PgUserAccountRepository', () => {
-  describe('load', () => {
-    let sut: PgUserAccountRepository
-    let pgUserRepo: Repository<PgUser>
-    let backup: IBackup
+  let sut: PgUserAccountRepository
+  let pgUserRepo: Repository<PgUser>
+  let backup: IBackup
 
+  describe('load', () => {
     beforeAll(async () => {
-      const db = await makeFakeDb()
+      const db = await makeFakeDb([PgUser])
       backup = db.backup()
       pgUserRepo = getRepository(PgUser)
     })
