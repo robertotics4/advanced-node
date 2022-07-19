@@ -20,7 +20,7 @@ describe('FacebookLoginController', () => {
   })
 
   it('should return 400 if token is empty', async () => {
-    const httpResponse = await sut.handle({ handle: '' })
+    const httpResponse = await sut.handle({ token: '' })
 
     expect(httpResponse).toEqual({
       statusCode: 400,
