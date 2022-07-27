@@ -8,6 +8,7 @@
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/return-await": "off",
     "n/handle-callback-err": "off",
-    "@typescript-eslint/no-misused-promises": "off"
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }
