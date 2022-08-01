@@ -12,7 +12,7 @@ export class FacebookLoginController extends Controller {
     super()
   }
 
-  async perform ({ token }: HttpRequest): Promise<HttpResponse<Model>> {
+  override async perform ({ token }: HttpRequest): Promise<HttpResponse<Model>> {
     try {
       const accessToken = await this.facebookAuthentication({ token })
 
